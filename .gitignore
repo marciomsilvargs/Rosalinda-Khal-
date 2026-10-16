@@ -1,0 +1,11 @@
+# Dependencies
+node_modules/
+
+# Operating System & Backups
+.DS_Store
+Thumbs.db
+*.bak
+*.tmp
+
+# Test & Inspection artifacts
+.taste-skill/
