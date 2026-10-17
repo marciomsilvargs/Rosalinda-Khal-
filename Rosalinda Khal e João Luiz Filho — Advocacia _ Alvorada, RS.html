@@ -436,22 +436,60 @@ h1, h2, h3 {
 /* Hero Visual Composition */
 
 .panel {
-  background: var(--navy);
+  background: radial-gradient(circle at 50% 28%, #162842 0%, #0c1726 100%);
   color: #FAF9F6;
   position: relative;
   overflow: hidden;
   border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 48px -12px rgba(10, 18, 30, 0.45);
   min-height: 480px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: 36px;
+  justify-content: space-between;
+  padding: clamp(20px, 3.5vw, 32px);
+  gap: 20px;
+}
+.panel-header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.panel-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(14, 26, 43, 0.65);
+  border: 1px solid rgba(142, 109, 56, 0.28);
+  padding: 5px 12px;
+  border-radius: 999px;
+  backdrop-filter: blur(4px);
+}
+.panel-stage {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 270px;
+  padding: 8px 0;
 }
 .panel svg.blueprint-svg {
-  position: absolute;
-  inset: 0;
   width: 100%;
-  height: 100%;
+  max-width: 380px;
+  height: auto;
+  max-height: 340px;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.35));
 }
 .draw {
   stroke-dasharray: 1;
@@ -1149,18 +1187,47 @@ h1, h2, h3 {
 
         <div class="hero-composition">
           <div class="panel" role="img" aria-label="Composição gráfica do monograma do escritório: uma haste compartilhada, braços diagonais e uma base horizontal">
-            <svg class="blueprint-svg" viewBox="0 0 400 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-              <g stroke="var(--accent)" stroke-opacity=".2" stroke-width="1">
-                <path d="M60 0V520M130 0V520M200 0V520M270 0V520M340 0V520"/>
-              </g>
-              <g fill="none" stroke="#FAF8F5" stroke-width="3" stroke-linejoin="miter">
-                <path class="draw draw-stem" pathLength="1" d="M130 70V470"/>
-                <path class="draw draw-arm1" pathLength="1" d="M130 300L385 66"/>
-                <path class="draw draw-arm2" pathLength="1" d="M239.8 199.6L372 470"/>
-              </g>
-              <path class="draw draw-base" pathLength="1" d="M130 470H420" fill="none" stroke="var(--accent)" stroke-width="3"/>
-            </svg>
-            <div class="hero-card-meta" style="position:relative;z-index:2;background:rgba(20,36,58,0.92);border-radius:var(--radius-md);">
+            <div class="panel-header">
+              <span class="panel-tag">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                Monograma Institucional
+              </span>
+              <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.1em; color: rgba(250, 248, 245, 0.45); font-family: var(--serif);">K • L</span>
+            </div>
+
+            <div class="panel-stage">
+              <svg class="blueprint-svg" viewBox="0 0 460 460" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                <!-- Linhas Guia Arquitetônicas / Blueprint -->
+                <g stroke="var(--accent)" stroke-opacity="0.16" stroke-width="1" stroke-dasharray="3 3">
+                  <path d="M50 0V460 M120 0V460 M190 0V460 M260 0V460 M335 0V460 M410 0V460"/>
+                  <path d="M0 60H460 M0 166H460 M0 250H460 M0 330H460 M0 400H460"/>
+                </g>
+                <circle cx="230" cy="230" r="172" fill="none" stroke="var(--accent)" stroke-opacity="0.09" stroke-width="1" stroke-dasharray="4 4"/>
+                
+                <!-- Traçado Principal Animado (Monograma K) -->
+                <g fill="none" stroke="#FAF8F5" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path class="draw draw-stem" pathLength="1" d="M120 60V400"/>
+                  <path class="draw draw-arm1" pathLength="1" d="M120 250L350 60"/>
+                  <path class="draw draw-arm2" pathLength="1" d="M221 166L335 400"/>
+                </g>
+
+                <!-- Base Estrutural em Ouro (Monograma L) -->
+                <path class="draw draw-base" pathLength="1" d="M100 400H365" fill="none" stroke="var(--accent)" stroke-width="4.5" stroke-linecap="round"/>
+
+                <!-- Nós Geométricos de Precisão -->
+                <g fill="var(--accent)">
+                  <circle cx="120" cy="60" r="3.5" opacity="0.85"/>
+                  <circle cx="350" cy="60" r="3.5" opacity="0.85"/>
+                  <circle cx="120" cy="250" r="3.5" opacity="0.85"/>
+                  <circle cx="221" cy="166" r="3" opacity="0.85"/>
+                  <circle cx="120" cy="400" r="4" opacity="0.95"/>
+                  <circle cx="335" cy="400" r="3.5" opacity="0.85"/>
+                  <circle cx="365" cy="400" r="4" opacity="0.95"/>
+                </g>
+              </svg>
+            </div>
+
+            <div class="hero-card-meta" style="position:relative;z-index:2;background:rgba(20,36,58,0.92);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-md);">
               <div class="hero-card-meta-col">
                 <span style="color:#95A3B5;">Atendimento</span>
                 <strong style="color:#FAF9F6;">Segunda a Sexta</strong>
