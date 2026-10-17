@@ -53,5 +53,5 @@ server.listen(PORT, '0.0.0.0', () => {
   console.log(`Site: Rosalinda Khal e João Luiz Filho — Advocacia`);
   console.log(`Servidor local ativo em: ${url}`);
   console.log(`======================================================\n`);
-  exec(`start ${url}`);
+  exec(`start "" "${url}"`);
 });
